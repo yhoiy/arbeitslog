@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "bun --env-file=.env _scripts/prebuild.ts",
     "build": "tsc -b && vite build",
+    "postbuild": "bun --env-file=.env _scripts/postbuild.ts",
     "preview": "vite preview",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
