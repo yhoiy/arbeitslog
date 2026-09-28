@@ -1,4 +1,4 @@
-import type { BlockWithChildren } from '../getNotionContents/getRecursiveBlocks.ts'
+import type { BlockWithChildren } from '../../../types/notion.types.ts'
 import { processMediaBlock } from './mediaBlocks.ts'
 
 export async function processBlock(blocks: BlockWithChildren[]) {

@@ -1,5 +1,5 @@
 import { extname } from 'node:path'
-import type { BlockWithChildren } from '../getNotionContents/getRecursiveBlocks.ts'
+import type { BlockWithChildren } from 'types/notion.types.ts'
 
 function filterMediaSubBlock(block: BlockWithChildren) {
   switch (block.type) {

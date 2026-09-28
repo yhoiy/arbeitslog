@@ -1,7 +1,6 @@
-import { isFullBlock, type BlockObjectResponse } from '@notionhq/client'
+import { isFullBlock } from '@notionhq/client'
 import { notion } from './notion.ts'
-
-export type BlockWithChildren = BlockObjectResponse & { children?: BlockWithChildren[] }
+import type { BlockWithChildren } from 'types/notion.types.ts'
 
 export async function getRecursiveBlocks(block_id: string): Promise<BlockWithChildren[]> {
   let has_more: boolean = true
