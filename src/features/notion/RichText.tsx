@@ -1,5 +1,6 @@
 import type { RichTextItemResponse } from '@notionhq/client'
 import { RichTextAnnotation } from './RichTextAnnotation'
+import * as css from './RichText.css'
 
 export function RichTextBlock({ block }: { block: RichTextItemResponse[] }) {
   return (
@@ -19,7 +20,7 @@ export function RichText({ richtext }: { richtext: RichTextItemResponse }) {
         {(() => {
           switch (richtext.type) {
             case 'text':
-              return <span>{richtext.text.content}</span>
+              return <span className={richtext.href ? css.underline : undefined}>{richtext.text.content}</span>
             case 'equation':
               return <span>{richtext.equation.expression}</span>
             default:

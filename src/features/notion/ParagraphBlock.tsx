@@ -1,17 +1,18 @@
 import type { WithChildren } from '#/types/notion.types'
 import type { ParagraphBlockObjectResponse } from '@notionhq/client'
-import { Block } from './Block'
+import { BlockSequence } from './Block'
 import { RichTextBlock } from './RichText'
+import * as css from './ParagraphBlock.css'
 
 export function ParagraphBlock({ block }: { block: WithChildren<ParagraphBlockObjectResponse> }) {
   const { paragraph, children } = block
 
   return (
-    <div>
-      <RichTextBlock block={paragraph.rich_text} />
-      {children?.map(cb => (
-        <Block key={cb.id} block={cb} />
-      ))}
-    </div>
+    <>
+      <p className={css.paragraph}>
+        <RichTextBlock block={paragraph.rich_text} />
+      </p>
+      {children && <BlockSequence blocks={children} />}
+    </>
   )
 }
