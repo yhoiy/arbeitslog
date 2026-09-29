@@ -27,5 +27,5 @@ export async function processMediaBlock(block: BlockWithChildren) {
   if (!response.ok) return
 
   await Bun.write(`./public/data/media/${path}`, response)
-  subBlock.file.url = `/media/${path}`
+  subBlock.file.url = `/data/media/${path}`
 }
