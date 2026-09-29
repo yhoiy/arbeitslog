@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router'
+import { Link, useLoaderData } from 'react-router'
 import type { mainPageLoader } from './MainPage.loader'
 
 export function MainPage() {
@@ -9,8 +9,7 @@ export function MainPage() {
         const title = a.properties['제목']?.type === 'title' && a.properties['제목']?.title?.[0].plain_text
         return (
           <div key={a.id}>
-            {title}
-            {a.path}
+            <Link to={`/${a.path}`}>{title}</Link>
           </div>
         )
       })}
