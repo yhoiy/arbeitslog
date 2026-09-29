@@ -1,13 +1,13 @@
 import { useLoaderData } from 'react-router'
 import { articlePageLoader } from './ArticlePage.loader'
-import { RenderNotionPage } from '../features/notion/RenderNotionPage'
+import { BlockSequence } from '../features/notion/Block'
 
 export function ArticlePage() {
   const { article } = useLoaderData<typeof articlePageLoader>()
   if (!article) return null
   return (
     <div>
-      <RenderNotionPage pageBlocks={article.blocks} />
+      <BlockSequence blocks={article.blocks} />
     </div>
   )
 }
