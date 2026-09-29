@@ -1,5 +1,6 @@
 import type { BlockWithChildren } from '#/types/notion.types'
 import { HeadingBlock } from './HeadingBlock'
+import { ImageBlock } from './ImageBlock'
 import { ParagraphBlock } from './ParagraphBlock'
 
 export function Block({ block }: { block: BlockWithChildren }) {
@@ -35,7 +36,7 @@ export function Block({ block }: { block: BlockWithChildren }) {
       case 'heading_4':
         return <HeadingBlock block={block} />
       case 'image':
-        return
+        return <ImageBlock block={block} />
       case 'link_preview':
         return
       case 'numbered_list_item':
