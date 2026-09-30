@@ -1,20 +1,41 @@
 import type { BlockWithChildren } from '#/types/notion.types'
+import { Fragment } from 'react'
 import * as css from './Block.css'
 import { HeadingBlock } from './HeadingBlock'
 import { ImageBlock } from './ImageBlock'
 import { ParagraphBlock } from './ParagraphBlock'
+import { BulletedListItemBlockWrapper, BulletedListItemBlock } from './BulletedListItemBlock'
+import { NumberedListItemBlock, NumberedListItemBlockWrapper } from './NumberedListBlock'
 
 export type BlockSequenceProps = { blocks: BlockWithChildren[]; indent?: boolean }
 export function BlockSequence({ blocks, indent }: BlockSequenceProps) {
+  const groupedBlocks = blocks.reduce<BlockWithChildren[][]>((acc, cur) => {
+    if (cur.type === acc.at(-1)?.at(-1)?.type) acc.at(-1)?.push(cur)
+    else acc.push([cur])
+    return acc
+  }, [])
+
   return (
     <>
-      {blocks?.map(cb => (
-        <div key={cb.id} className={indent ? css.childrenBlock : undefined}>
-          <Block block={cb} />
-        </div>
-      ))}
+      {groupedBlocks.map(group => {
+        const WrapperComponent = groupRenderers[group[0].type] ?? Fragment
+        return (
+          <WrapperComponent key={group[0].id}>
+            {group?.map(cb => (
+              <div key={cb.id} className={indent ? css.childrenBlock : undefined}>
+                <Block block={cb} />
+              </div>
+            ))}
+          </WrapperComponent>
+        )
+      })}
     </>
   )
+}
+
+const groupRenderers: Partial<Record<BlockWithChildren['type'], React.ComponentType<{ children: React.ReactNode }>>> = {
+  bulleted_list_item: BulletedListItemBlockWrapper,
+  numbered_list_item: NumberedListItemBlockWrapper,
 }
 
 function Block({ block }: { block: BlockWithChildren }) {
@@ -29,7 +50,7 @@ function Block({ block }: { block: BlockWithChildren }) {
           case 'breadcrumb':
             return
           case 'bulleted_list_item':
-            return
+            return <BulletedListItemBlock block={block} />
           case 'callout':
             return
           case 'code':
@@ -56,7 +77,7 @@ function Block({ block }: { block: BlockWithChildren }) {
           case 'link_preview':
             return
           case 'numbered_list_item':
-            return
+            return <NumberedListItemBlock block={block} />
           case 'paragraph':
             return <ParagraphBlock block={block} />
           case 'pdf':
