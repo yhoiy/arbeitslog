@@ -12,7 +12,7 @@ export function ParagraphBlock({ block }: { block: WithChildren<ParagraphBlockOb
       <p className={css.paragraph}>
         <RichTextBlock block={paragraph.rich_text} />
       </p>
-      {children && <BlockSequence blocks={children} />}
+      {children && <BlockSequence blocks={children} indent />}
     </>
   )
 }
