@@ -20,13 +20,13 @@ export function BlockSequence({ blocks, indent }: BlockSequenceProps) {
       {groupedBlocks.map(group => {
         const WrapperComponent = groupRenderers[group[0].type] ?? Fragment
         return (
-          <WrapperComponent key={group[0].id}>
-            {group?.map(cb => (
-              <div key={cb.id} className={indent ? css.childrenBlock : undefined}>
-                <Block block={cb} />
-              </div>
-            ))}
-          </WrapperComponent>
+          <div key={group[0].id} className={indent ? css.childrenBlock : undefined}>
+            <WrapperComponent>
+              {group?.map(cb => (
+                <Block key={cb.id} block={cb} />
+              ))}
+            </WrapperComponent>
+          </div>
         )
       })}
     </>
