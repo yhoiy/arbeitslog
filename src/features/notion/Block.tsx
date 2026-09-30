@@ -1,5 +1,5 @@
 import type { BlockWithChildren } from '#/types/notion.types'
-import { Fragment } from 'react'
+import { Fragment, type PropsWithChildren } from 'react'
 import * as css from './Block.css'
 import { HeadingBlock } from './HeadingBlock'
 import { ImageBlock } from './ImageBlock'
@@ -33,7 +33,7 @@ export function BlockSequence({ blocks, indent }: BlockSequenceProps) {
   )
 }
 
-const groupRenderers: Partial<Record<BlockWithChildren['type'], React.ComponentType<{ children: React.ReactNode }>>> = {
+const groupRenderers: Partial<Record<BlockWithChildren['type'], React.ComponentType<PropsWithChildren>>> = {
   bulleted_list_item: BulletedListItemBlockWrapper,
   numbered_list_item: NumberedListItemBlockWrapper,
 }
