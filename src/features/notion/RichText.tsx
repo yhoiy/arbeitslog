@@ -2,17 +2,17 @@ import type { RichTextItemResponse } from '@notionhq/client'
 import { RichTextAnnotation } from './RichTextAnnotation'
 import * as css from './RichText.css'
 
-export function RichTextBlock({ block }: { block: RichTextItemResponse[] }) {
+export function RichText({ block }: { block: RichTextItemResponse[] }) {
   return (
     <>
       {block.map((rt, i) => (
-        <RichText key={i} richtext={rt} />
+        <SingleRichText key={i} richtext={rt} />
       ))}
     </>
   )
 }
 
-export function RichText({ richtext }: { richtext: RichTextItemResponse }) {
+function SingleRichText({ richtext }: { richtext: RichTextItemResponse }) {
   const WrapperComponent = richtext.href ? 'a' : 'span'
   return (
     <WrapperComponent href={richtext.href ?? undefined} target="_blank" rel="noreferrer">

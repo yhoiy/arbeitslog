@@ -1,11 +1,11 @@
 import type { WithChildren } from '#/types/notion.types'
 import type { BulletedListItemBlockObjectResponse } from '@notionhq/client'
 import { BlockSequence } from './Block'
-import { RichTextBlock } from './RichText'
+import { RichText } from './RichText'
 import type { PropsWithChildren } from 'react'
-import * as css from './BulletedListItemBlock.css'
+import * as css from './BulletedListItem.css'
 
-export function BulletedListItemBlockWrapper({ children, ...props }: PropsWithChildren) {
+export function BulletedListItemWrapper({ children, ...props }: PropsWithChildren) {
   return (
     <ul className={css.ul} {...props}>
       {children}
@@ -13,10 +13,10 @@ export function BulletedListItemBlockWrapper({ children, ...props }: PropsWithCh
   )
 }
 
-export function BulletedListItemBlock({ block }: { block: WithChildren<BulletedListItemBlockObjectResponse> }) {
+export function BulletedListItem({ block }: { block: WithChildren<BulletedListItemBlockObjectResponse> }) {
   return (
     <li className={css.li}>
-      <RichTextBlock block={block.bulleted_list_item.rich_text} />
+      <RichText block={block.bulleted_list_item.rich_text} />
       {block.children && <BlockSequence blocks={block.children} indent />}
     </li>
   )

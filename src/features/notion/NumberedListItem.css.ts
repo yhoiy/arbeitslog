@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css'
-import { li as bulletedLi } from './BulletedListItemBlock.css'
+import { li as bulletedLi } from './BulletedListItem.css'
+
 export const ol = style({
   listStylePosition: 'inside',
   margin: 0,

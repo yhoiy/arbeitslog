@@ -1,7 +1,7 @@
 import type { ImageBlockObjectResponse } from '@notionhq/client'
-import { RichTextBlock } from './RichText'
+import { RichText } from './RichText'
 
-export function ImageBlock({ block }: { block: ImageBlockObjectResponse }) {
+export function Image({ block }: { block: ImageBlockObjectResponse }) {
   const src = block.image.type === 'file' ? block.image.file.url : block.image.external.url
   const captionText = block.image.caption.map(r => r.plain_text).join('')
 
@@ -9,7 +9,7 @@ export function ImageBlock({ block }: { block: ImageBlockObjectResponse }) {
     <figure>
       <img src={src} alt={captionText} />
       <figcaption>
-        <RichTextBlock block={block.image.caption} />
+        <RichText block={block.image.caption} />
       </figcaption>
     </figure>
   )

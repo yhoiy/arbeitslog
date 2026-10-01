@@ -1,11 +1,11 @@
 import type { BlockWithChildren } from '#/types/notion.types'
 import { Fragment, type PropsWithChildren } from 'react'
 import * as css from './Block.css'
-import { HeadingBlock } from './HeadingBlock'
-import { ImageBlock } from './ImageBlock'
-import { ParagraphBlock } from './ParagraphBlock'
-import { BulletedListItemBlockWrapper, BulletedListItemBlock } from './BulletedListItemBlock'
-import { NumberedListItemBlock, NumberedListItemBlockWrapper } from './NumberedListBlock'
+import { Heading } from './Heading'
+import { Image } from './Image'
+import { Paragraph } from './Paragraph'
+import { BulletedListItem, BulletedListItemWrapper } from './BulletedListItem'
+import { NumberedListItem, NumberedListItemWrapper } from './NumberedListItem'
 
 export type BlockSequenceProps = { blocks: BlockWithChildren[]; indent?: boolean }
 export function BlockSequence({ blocks, indent }: BlockSequenceProps) {
@@ -34,8 +34,8 @@ export function BlockSequence({ blocks, indent }: BlockSequenceProps) {
 }
 
 const groupRenderers: Partial<Record<BlockWithChildren['type'], React.ComponentType<PropsWithChildren>>> = {
-  bulleted_list_item: BulletedListItemBlockWrapper,
-  numbered_list_item: NumberedListItemBlockWrapper,
+  bulleted_list_item: BulletedListItemWrapper,
+  numbered_list_item: NumberedListItemWrapper,
 }
 
 function Block({ block }: { block: BlockWithChildren }) {
@@ -50,7 +50,7 @@ function Block({ block }: { block: BlockWithChildren }) {
           case 'breadcrumb':
             return
           case 'bulleted_list_item':
-            return <BulletedListItemBlock block={block} />
+            return <BulletedListItem block={block} />
           case 'callout':
             return
           case 'code':
@@ -71,15 +71,15 @@ function Block({ block }: { block: BlockWithChildren }) {
           case 'heading_2':
           case 'heading_3':
           case 'heading_4':
-            return <HeadingBlock block={block} />
+            return <Heading block={block} />
           case 'image':
-            return <ImageBlock block={block} />
+            return <Image block={block} />
           case 'link_preview':
             return
           case 'numbered_list_item':
-            return <NumberedListItemBlock block={block} />
+            return <NumberedListItem block={block} />
           case 'paragraph':
-            return <ParagraphBlock block={block} />
+            return <Paragraph block={block} />
           case 'pdf':
             return
           case 'quote':
