@@ -1,18 +1,7 @@
-import { Link, useLoaderData } from 'react-router'
-import type { mainPageLoader } from './MainPage.loader'
+import { useRouteLoaderData } from 'react-router'
+import type { rootLayoutLoader } from './RootLayout.loader'
 
 export function MainPage() {
-  const { articleList } = useLoaderData<typeof mainPageLoader>()
-  return (
-    <div>
-      {articleList.map(a => {
-        const title = a.properties['제목']?.type === 'title' && a.properties['제목']?.title?.[0].plain_text
-        return (
-          <div key={a.id}>
-            <Link to={`/${a.path}`}>{title}</Link>
-          </div>
-        )
-      })}
-    </div>
-  )
+  const data = useRouteLoaderData<typeof rootLayoutLoader>('rootLayout')
+  return <div>{data?.articleList.length}개의 글</div>
 }
