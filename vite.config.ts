@@ -4,4 +4,7 @@ import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
 
 export default defineConfig({
   plugins: [react(), vanillaExtractPlugin()],
+  resolve: {
+    tsconfigPaths: true,
+  },
 })
