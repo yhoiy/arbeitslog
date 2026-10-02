@@ -2,6 +2,8 @@ import type { PageObjectResponse } from '@notionhq/client'
 import { getArticleList } from './features/getNotionContents/getArticleList.ts'
 import { getFullArticle } from './features/getNotionContents/getFullArticle.ts'
 import { processBlock } from './features/processBlocks/processBlock.ts'
+import { slugify } from '../utils/slugify.ts'
+import { richToPlain } from '../utils/richToPlain.ts'
 
 export type ExtendedPageObjectResponse = PageObjectResponse & { path?: string }
 
@@ -10,10 +12,9 @@ export type ExtendedPageObjectResponse = PageObjectResponse & { path?: string }
 
   for (const post of posts) {
     const article = await getFullArticle(post)
-    const slug =
-      article.properties['슬러그']?.type === 'rich_text'
-        ? article.properties['슬러그'].rich_text[0]?.plain_text
-        : undefined
+    const slug = slugify(
+      article.properties['제목'].type === 'title' ? richToPlain(article.properties['제목'].title) : '',
+    )
     const createdAt =
       article.properties['작성일']?.type === 'date' ? article.properties['작성일'].date?.start : undefined
     if (!slug || !createdAt) {
