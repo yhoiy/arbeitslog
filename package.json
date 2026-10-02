@@ -19,8 +19,7 @@
     "@vanilla-extract/css": "^1.21.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-router": "^8.4.0",
-    "valtio": "^2.3.2"
+    "react-router": "^8.4.0"
   },
   "devDependencies": {
     "@types/bun": "^1.4.2",
