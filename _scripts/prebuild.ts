@@ -17,8 +17,12 @@ export type ExtendedPageObjectResponse = PageObjectResponse & { path?: string }
     )
     const createdAt =
       article.properties['작성일']?.type === 'date' ? article.properties['작성일'].date?.start : undefined
-    if (!slug || !createdAt) {
-      console.error('공개된 포스트 중 슬러그, 작성일이 없는 포스트가 있습니다.')
+    if (!slug) {
+      console.error('공개된 포스트 중 글 제목이 없는 포스트가 있습니다.')
+      process.exit(1)
+    }
+    if (!createdAt) {
+      console.error('공개된 포스트 중 작성일이 없는 포스트가 있습니다.')
       process.exit(1)
     }
 
