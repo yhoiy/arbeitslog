@@ -1,16 +1,23 @@
-import { styleVariants } from '@vanilla-extract/css'
+import { style, styleVariants } from '@vanilla-extract/css'
 
-export const depth = styleVariants({
+export const defaultMargin = style({
+  marginLeft: '1em',
+})
+
+export const levelMargin = styleVariants({
+  0: {
+    paddingLeft: 0,
+  },
   1: {
-    marginLeft: '0.25rem',
+    paddingLeft: '0.75em',
   },
   2: {
-    marginLeft: '0.5rem',
+    paddingLeft: '1.5em',
   },
   3: {
-    marginLeft: '0.75rem',
+    paddingLeft: '2.25em',
   },
   4: {
-    marginLeft: '1rem',
+    paddingLeft: '3em',
   },
 })
