@@ -7,6 +7,7 @@ import type {
 import { RichText } from './RichText'
 import { slugify } from '#/utils/slugify'
 import { richToPlain } from '#/utils/richToPlain'
+import { getLeveledHeading } from './Heading.util'
 
 type Heading4BlockObjectResponse = Extract<BlockObjectResponse, { type: 'heading_4' }>
 
@@ -16,35 +17,15 @@ export type HeadingBlockObjectResponse =
   | Heading3BlockObjectResponse
   | Heading4BlockObjectResponse
 
+const headingTag = { 1: 'h2', 2: 'h3', 3: 'h4', 4: 'h5' } as const
+
 export function Heading({ block }: { block: HeadingBlockObjectResponse }) {
-  return (() => {
-    switch (block.type) {
-      case 'heading_1':
-        return (
-          <h2 id={`${slugify(richToPlain(block.heading_1.rich_text))}`}>
-            <RichText block={block.heading_1.rich_text} />
-          </h2>
-        )
-      case 'heading_2':
-        return (
-          <h3 id={`${slugify(richToPlain(block.heading_2.rich_text))}`}>
-            <RichText block={block.heading_2.rich_text} />
-          </h3>
-        )
-      case 'heading_3':
-        return (
-          <h4 id={`${slugify(richToPlain(block.heading_3.rich_text))}`}>
-            <RichText block={block.heading_3.rich_text} />
-          </h4>
-        )
-      case 'heading_4':
-        return (
-          <h5 id={`${slugify(richToPlain(block.heading_4.rich_text))}`}>
-            <RichText block={block.heading_4.rich_text} />
-          </h5>
-        )
-      default:
-        return null
-    }
-  })()
+  const { level, content } = getLeveledHeading(block)
+  const Tag = headingTag[level]
+
+  return (
+    <Tag id={slugify(richToPlain(getLeveledHeading(block).content.rich_text))}>
+      <RichText block={content.rich_text} />
+    </Tag>
+  )
 }
