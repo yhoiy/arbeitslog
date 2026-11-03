@@ -21,3 +21,10 @@ export const levelMargin = styleVariants({
     paddingLeft: '3em',
   },
 })
+
+export const list = style({
+  fontFamily: `'Hoi747', sans-serif`,
+  color: '#777',
+  lineHeight: 1.4,
+  fontSize: '0.9rem',
+})

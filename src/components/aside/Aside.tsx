@@ -1,10 +1,11 @@
 import type { ArticleObject } from '#/types/notion.types'
 import { richToPlain } from '#/utils/richToPlain'
 import { NavLink } from 'react-router'
+import * as css from './Aside.css'
 
 export function Aside({ articleList }: { articleList: ArticleObject[] }) {
   return (
-    <ul>
+    <ul className={css.asideFrame}>
       {articleList.map(article => (
         <li key={article.id}>
           <NavLink to={`/${article.path}`}>

@@ -8,6 +8,7 @@ import { RichText } from './RichText'
 import { slugify } from '#/utils/slugify'
 import { richToPlain } from '#/utils/richToPlain'
 import { getLeveledHeading } from './Heading.util'
+import * as css from './Heading.css'
 
 type Heading4BlockObjectResponse = Extract<BlockObjectResponse, { type: 'heading_4' }>
 
@@ -24,7 +25,7 @@ export function Heading({ block }: { block: HeadingBlockObjectResponse }) {
   const Tag = headingTag[level]
 
   return (
-    <Tag id={slugify(richToPlain(getLeveledHeading(block).content.rich_text))}>
+    <Tag className={css.headingTypo} id={slugify(richToPlain(getLeveledHeading(block).content.rich_text))}>
       <RichText block={content.rich_text} />
     </Tag>
   )

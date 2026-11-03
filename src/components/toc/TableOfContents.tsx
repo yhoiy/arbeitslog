@@ -25,7 +25,7 @@ function RecursiveList({ level, nodes }: { level: keyof typeof css.levelMargin; 
       {nodes.map(({ block, children, level: next }) => {
         const { rich_text } = getLeveledHeading(block).content
         return (
-          <li key={block.id}>
+          <li key={block.id} className={css.list}>
             <a href={`#${slugify(richToPlain(rich_text))}`}>
               <RichText block={rich_text} />
             </a>
