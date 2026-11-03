@@ -1,4 +1,14 @@
-import { globalStyle } from '@vanilla-extract/css'
+import { globalFontFace, globalStyle } from '@vanilla-extract/css'
+
+globalFontFace('Hoi747', {
+  src: `url(/fonts/Hoi747-Regular.subset.woff2)`,
+  fontWeight: 'normal',
+})
+
+globalFontFace('Hoi747', {
+  src: `url(/fonts/Hoi747-SemiBold.subset.woff2)`,
+  fontWeight: 'bold',
+})
 
 globalStyle('*, *::before, *::after', {
   boxSizing: 'border-box',
@@ -9,6 +19,13 @@ globalStyle('body', {
   padding: 0,
   fontSize: '100%',
   lineHeight: 1,
+  MozOsxFontSmoothing: 'grayscale',
+  fontSmooth: 'antialised',
+  fontFamily: `'Hoi747', serif`,
+})
+
+globalStyle('input, button, figure, h1, h2, h3, h4, h5, h6, figcaption, table', {
+  fontFamily: `'Hoi747', sans-serif`,
 })
 
 globalStyle('img', {
@@ -24,11 +41,11 @@ globalStyle('figure, figcaption', {
   padding: 0,
 })
 
-globalStyle('h1, h2, h3, h4, h5, h6, p, a', {
+globalStyle('h1, h2, h3, h4, h5, h6, p, a, li', {
   margin: 0,
   padding: 0,
   lineHeight: 1,
-  fontSize: '1rem',
+  fontSize: 'inherit',
   fontWeight: 400,
 })
 
