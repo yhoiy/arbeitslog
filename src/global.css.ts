@@ -14,6 +14,15 @@ globalStyle('*, *::before, *::after', {
   boxSizing: 'border-box',
 })
 
+globalStyle('::selection', {
+  color: 'yellow',
+  backgroundColor: 'blue',
+})
+
+globalStyle('html, input, button, a', {
+  cursor: 'none',
+})
+
 globalStyle('body', {
   margin: 0,
   padding: 0,
