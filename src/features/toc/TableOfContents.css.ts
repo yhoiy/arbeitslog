@@ -2,6 +2,13 @@ import { style, styleVariants } from '@vanilla-extract/css'
 
 export const defaultMargin = style({
   marginLeft: '1em',
+  marginBottom: '4rem',
+})
+
+export const tocHeading = style({
+  fontFamily: `'Hoi747', sans-serif`,
+  fontWeight: 400,
+  color: '#777',
 })
 
 export const levelMargin = styleVariants({
@@ -27,4 +34,14 @@ export const list = style({
   color: '#777',
   lineHeight: 1.4,
   fontSize: '0.9rem',
+  '@media': {
+    '(hover:hover) and (pointer:fine)': {
+      selectors: {
+        '&:hover': {
+          textDecoration: 'underline',
+          textUnderlineOffset: '0.2rem',
+        },
+      },
+    },
+  },
 })

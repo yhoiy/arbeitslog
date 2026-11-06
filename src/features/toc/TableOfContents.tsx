@@ -7,9 +7,12 @@ import * as css from './TableOfContents.css'
 
 export function TableOfContents({ titleBlocks }: { titleBlocks: HeadingBlockObjectResponse[] }) {
   return (
-    <div className={css.defaultMargin}>
-      <RecursiveList level={0} nodes={buildTree(titleBlocks)} />
-    </div>
+    <>
+      <h2 className={css.tocHeading}>목차</h2>
+      <div className={css.defaultMargin}>
+        <RecursiveList level={0} nodes={buildTree(titleBlocks)} />
+      </div>
+    </>
   )
 }
 
