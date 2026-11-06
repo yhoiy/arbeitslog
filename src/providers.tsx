@@ -1,3 +1,9 @@
+import { AsideProvider } from './components/aside/AsideContext'
+
 export function Providers({ children }: { children: React.ReactNode }) {
-  return <div>{children}</div>
+  return (
+    <>
+      <AsideProvider>{children}</AsideProvider>
+    </>
+  )
 }
