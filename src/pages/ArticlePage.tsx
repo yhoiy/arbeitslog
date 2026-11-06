@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router'
 import { articlePageLoader } from './ArticlePage.loader'
 import { BlockSequence } from '../features/notion/Block'
-import { TableOfContents } from '../components/toc/TableOfContents'
+import { TableOfContents } from '../features/toc/TableOfContents'
 import * as css from './ArticlePage.css'
 import { ArticleMeta } from '../features/articleMeta/ArticleMeta'
 
