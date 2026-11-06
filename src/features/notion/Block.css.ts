@@ -7,3 +7,7 @@ export const childrenBlock = style({
 export const blockBasicMargins = style({
   marginBlock: '0.5em',
 })
+
+export const baseFontSize = style({
+  fontSize: '1.05rem',
+})

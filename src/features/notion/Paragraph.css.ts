@@ -1,5 +1,9 @@
 import { style } from '@vanilla-extract/css'
+import { baseFontSize } from './Block.css'
 
-export const paragraph = style({
-  lineHeight: 1.6,
-})
+export const paragraph = style([
+  baseFontSize,
+  {
+    lineHeight: 1.6,
+  },
+])
