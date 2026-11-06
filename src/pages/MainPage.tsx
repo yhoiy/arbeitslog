@@ -1,7 +1,9 @@
-import { useRouteLoaderData } from 'react-router'
-import type { rootLayoutLoader } from './RootLayout.loader'
+import * as css from './MainPage.css'
 
 export function MainPage() {
-  const data = useRouteLoaderData<typeof rootLayoutLoader>('rootLayout')
-  return <div>{data?.articleList.length}개의 글</div>
+  return (
+    <div className={css.mainPageFrame}>
+      <p>일과 회사에 대한 이야기들</p>
+    </div>
+  )
 }
