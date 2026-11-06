@@ -2,18 +2,20 @@ import { style } from '@vanilla-extract/css'
 
 export const asideList = style({
   listStyleType: 'none',
-  padding: '1.5rem 1rem',
+  padding: '2.75rem 1rem',
   margin: 0,
 })
 
 export const asideWrapper = style({
-  position: 'relative',
-  width: '100%',
-
+  position: 'fixed',
+  inset: 0,
+  zIndex: 10,
+  pointerEvents: 'none',
+  color: 'white',
   '::after': {
     content: '""',
     position: 'absolute',
-    top: 0,
+    top: '50%',
     left: 0,
     width: '100%',
     height: 1,
@@ -38,15 +40,14 @@ export const asideFrame = style({
   padding: 0,
   margin: 0,
   width: '100%',
-  height: 0,
-  overflow: 'hidden',
+  height: '100%',
+  pointerEvents: 'auto',
+  clipPath: 'inset(50% 0 50% 0)',
+  transition: 'clip-path 520ms ease-in-out',
   backgroundColor: 'black',
-  color: 'white',
-  transition: 'height 520ms ease-in-out',
-
   selectors: {
     [`${asideWrapper}[data-open="true"] &`]: {
-      height: '75dvh',
+      clipPath: 'inset(0 0 0 0)',
       transitionDelay: '280ms',
     },
   },

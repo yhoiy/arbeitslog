@@ -14,13 +14,17 @@ globalStyle('*, *::before, *::after', {
   boxSizing: 'border-box',
 })
 
+globalStyle('html, body', {
+  backgroundColor: 'white',
+})
+
 globalStyle('body', {
   margin: 0,
   padding: 0,
   fontSize: '100%',
   lineHeight: 1,
   MozOsxFontSmoothing: 'grayscale',
-  fontSmooth: 'antialised',
+  WebkitFontSmoothing: 'antialised',
   fontFamily: `'Hoi747', serif`,
 })
 

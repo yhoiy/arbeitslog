@@ -1,20 +1,31 @@
 import { style } from '@vanilla-extract/css'
 
-export const headerFrame = style({
+export const headerFrameBase = style({
   marginBlock: '0.75rem',
   marginInline: '1rem',
-  backgroundColor: 'white',
   display: 'flex',
   gap: '0.75rem',
   alignItems: 'center',
 })
 
+export const difference = style({
+  position: 'relative',
+  zIndex: 11,
+  color: 'white',
+  mixBlendMode: 'difference',
+})
+
 export const headerMenuButton = style({
-  display: 'block',
+  cursor: 'pointer',
+  display: 'inline-flex',
+  alignItems: 'center',
+  fontSize: '1rem',
+  lineHeight: 1,
+  fontWeight: 400,
   margin: 0,
-  padding: 0,
-  height: '1.125rem',
+  paddingBlock: '0.2rem',
+  paddingInline: 0,
   backgroundColor: 'transparent',
   border: 'none',
-  font: 'inherit',
+  color: 'inherit',
 })
